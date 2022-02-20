@@ -1,0 +1,97 @@
+create database notificationsettings;
+
+CREATE TABLE users (
+    id  int AUTO_INCREMENT PRIMARY KEY,
+    username varchar(300),
+    email varchar(200),
+    phone varchar(25)
+);
+ALTER TABLE users MODIFY username varchar(300) NOT NULL;
+ALTER TABLE users MODIFY email varchar(200) NOT NULL;
+ALTER TABLE users MODIFY phone varchar(25) NOT NULL;
+ALTER TABLE users ADD CHECK (username <> '');
+ALTER TABLE users ADD CHECK (phone<> '');
+ALTER TABLE users ADD CHECK (email <> '');
+ALTER TABLE users ADD CONSTRAINT email_uni UNIQUE (email);
+alter table users add isadmin bit not null;
+
+CREATE table devicegroups (
+    id  int AUTO_INCREMENT PRIMARY KEY,
+    groupname varchar(200),
+    location varchar(200),
+    provider varchar(100),
+    description varchar(300)
+);
+ALTER TABLE devicegroups MODIFY groupname varchar(200) NOT NULL;
+ALTER TABLE devicegroups ADD CHECK ( groupname  <> '');
+ALTER TABLE devicegroups ADD CONSTRAINT groupname_uni UNIQUE (groupname);
+
+CREATE table alerttypes (
+    id  int AUTO_INCREMENT PRIMARY KEY,
+    typename varchar(200),
+    typealias varchar(150),
+    rules json,
+    description varchar(300)
+);
+ALTER TABLE alerttypes MODIFY typename varchar(200) NOT NULL;
+ALTER TABLE alerttypes ADD CHECK ( typename <> '');
+ALTER TABLE alerttypes ADD CHECK ( rules <> '');
+ALTER TABLE alerttypes ADD CHECK ( json_length(rules) > 1);
+ALTER TABLE alerttypes MODIFY rules json NOT NULL;
+ALTER TABLE alerttypes ADD CONSTRAINT typename_uni UNIQUE (typename);
+
+
+CREATE table grouptotype (
+    id  int AUTO_INCREMENT PRIMARY KEY,
+    alerttypeid int,
+    devicegroupid int,
+    FOREIGN KEY (alerttypeid) REFERENCES alerttypes (id),
+    FOREIGN KEY (devicegroupid) REFERENCES devicegroups (id)
+);
+ALTER TABLE grouptotype ADD CONSTRAINT grouptotype_uni UNIQUE (alerttypeid,devicegroupid);
+
+
+CREATE table usertoalerts (
+    id  int AUTO_INCREMENT PRIMARY KEY,
+    userid int,
+    grouptotypeid int,
+    FOREIGN KEY (userid) REFERENCES users (id),
+    FOREIGN KEY (grouptotypeid) REFERENCES grouptotype (id)
+);
+ALTER TABLE usertoalerts ADD CONSTRAINT usertoalerts_uni UNIQUE (userid,grouptotypeid);
+
+CREATE table channels (
+    id  int AUTO_INCREMENT PRIMARY KEY,
+    channelname varchar(200),
+    description varchar(300)
+);
+ALTER TABLE channels MODIFY channelname varchar(200) NOT NULL;
+ALTER TABLE channels ADD CHECK ( channelname <> '');
+ALTER TABLE channels ADD CONSTRAINT channelname_uni UNIQUE (channelname);
+
+CREATE table frequency (
+    id  int AUTO_INCREMENT PRIMARY KEY,
+    frequencyname varchar(100),
+    frequencyalias varchar(200),
+    description varchar(300)
+);
+ALTER TABLE frequency MODIFY frequencyname varchar(100) NOT NULL;
+ALTER TABLE frequency ADD CHECK ( frequencyname <> '');
+ALTER TABLE frequency ADD CONSTRAINT frequencyname_uni UNIQUE (frequencyname);
+
+CREATE table subscription (
+    id  int AUTO_INCREMENT PRIMARY KEY,
+    channelid int,
+    frequencyid int,
+    userid int,
+    FOREIGN KEY (channelid) REFERENCES channels (id),
+    FOREIGN KEY (frequencyid) REFERENCES frequency (id),
+    FOREIGN KEY (userid) REFERENCES users (id)
+);
+ALTER TABLE subscription ADD CONSTRAINT subscription_id UNIQUE (channelid, frequencyid,userid);
+
+
+
+
+
+

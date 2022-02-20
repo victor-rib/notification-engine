@@ -1,0 +1,7 @@
+<div id="general-alert-comp" class="hidden" style="z-index: 1050; position : fixed"> 
+  <span style = "display:table; margin:0 auto">{{ alertMessage }}</span>
+</div>
+
+<div class="loading" [hidden] = "!isLoading"></div>
+
+<router-outlet></router-outlet>

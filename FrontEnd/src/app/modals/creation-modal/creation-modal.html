@@ -1,0 +1,22 @@
+<div class="modal-header">
+    <h3 class="modal-title"></h3>
+      <span>New Record</span>
+  </div>
+  <div class="modal-body">
+    <table *ngIf="!isLoading">
+        <ng-container *ngFor="let col of columns">
+            <tr *ngIf="col != 'Id'">
+                <td style="padding: 10px">{{col.name}}</td>
+                <td>
+                  <!-- <input type="text" [(ngModel)]="newRecord[col]"> -->
+                  <p-dropdown [placeholder]="'Select a '+col.labelname" [options]="col.dropdownlist" [(ngModel)]="newRecord[col.labelname]"  optionLabel="{{col.labelname}}"></p-dropdown>
+                </td>
+            </tr>
+        </ng-container>
+   </table> 
+ </div>
+  <div class="modal-footer">
+    <button type="button" (click)="saveClick()" >Salvar</button>
+    <button type="button" (click)="cancelClick()" >Cancelar</button>
+  </div>
+  

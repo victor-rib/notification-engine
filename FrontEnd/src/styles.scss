@@ -1,0 +1,223 @@
+/* You can add global styles to this file, and also import other style files */
+@import url(./app/styles/loader.scss);
+@import '~bootstrap/scss/bootstrap';
+@import "primeicons/primeicons.css";
+@import "primeng/resources/primeng.min.css";
+
+
+$base-background: linear-gradient(to right, LightCyan,EFF1F3);
+$base-red: #ff8690;
+$base-green: #83f887;
+$base-yellow: #fffd98;
+$base-gray : #f8f8f7;
+$base-grey : #979797;
+$base-white : white;
+$base-black : black;
+$highlight-one : #223843;
+$highlight-two : #D77A61;
+$highlight-three : #D8B4A0;
+$highlight-four : #2fd0ec;
+$highlight-five : #c8d3dd;
+
+body{
+    background-image: $base-background;
+}
+input{
+    border: 1px solid $base-grey;
+    border-radius: 5px;
+    padding: 5px;
+    width:130px;
+    margin: 10px;
+}
+
+.pi-sign-out{
+    color : black !important;
+}
+
+div#general-alert-comp {
+    border-radius: 10px;
+    border-color: $base-gray;
+    border-width: 1px;
+    color: $base-black;
+    height: 35px;
+    width: 100%;
+    font-size: 20px;
+    font-family: cursive;
+}
+
+.p-dropdown-label{
+    line-height: 50px;
+
+}
+.p-placeholder{
+    font-style: italic;
+}
+.p-dropdown-items-wrapper {
+    background-color: $base-gray;
+}
+.controls, .headers, .table-div {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid $base-grey;
+    margin: 10px;
+    box-shadow: 1px 1px $base-grey;
+}
+.add-button{
+    margin-top: 10px;
+    float: right;
+    margin-right: 50px;
+    border: 1px solid;
+    border-radius: 10px;
+}
+
+.invalid {
+ background-color: $base-red !important;
+}
+
+.headers {
+    background-color: $highlight-five;
+}
+
+.default-button {
+    border: 1px solid #2fd0ec;
+    border-radius: 10px;
+    background-color: #c8d3dd;
+    color: black;
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+.trigger-button {
+    border: 1px solid #2fd0ec;
+    border-radius: 10px;
+    background-color: #fffd98;
+    color: black;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.pi {
+    color : $highlight-four;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.pi-check{
+    color: $base-green;
+}
+
+.pi-times{
+    color: $base-red;
+}
+
+.pi-pencil {
+    color: $base-background;
+}
+
+.p-cell-editing {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.p-sidebar {
+    background-color: $highlight-one !important;
+    color: $base-white !important;
+}
+
+.p-sidebar-mask.p-component-overlay {
+    background: rgba(0, 0, 0, 0.3) !important;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+
+.align-right{
+    display : flex;
+    justify-content: right;
+}
+
+.align-middle{
+    display : flex;
+    justify-content:  center;
+}
+
+
+.align-left{
+    display : flex;
+    justify-content: left;
+}
+
+.hidden {
+    display : none;
+}
+
+.success-alert {
+    background-color: $base-green;
+}
+
+.warning-alert {
+    background-color: $base-yellow;
+}
+
+.error-alert {
+    background-color: $base-red;
+}
+
+
+.modal-dialog {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+  }
+  
+  .modal-content {
+    border: none;
+  }
+  
+  .modal-xl {
+    min-width: 80vw;
+  
+    .modal-content {
+      height: 80vh;
+    }
+  }
+
+  .tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+  
+  /* Style the buttons that are used to open the tab content */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }

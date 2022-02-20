@@ -1,0 +1,21 @@
+<div class="modal-header">
+    <h3 class="modal-title"></h3>
+      <span>Manage Record</span>
+  </div>
+  <div class="modal-body">
+    <table *ngIf="!isLoading">
+      <ng-container *ngFor="let item of data | keyvalue">
+        <tr *ngIf="item.key != 'id'">
+            <td style="padding: 10px">{{item.key}}</td>
+            <td>
+              <input (change)="changeKey(item.key, $event.target.value)" [ngModel]="item.value">
+            </td>
+        </tr>
+    </ng-container>
+   </table> 
+ </div>
+  <div class="modal-footer">
+    <button type="button" (click)="saveClick()" >Salvar</button>
+    <button type="button" (click)="cancelClick()" >Cancelar</button>
+  </div>
+  
